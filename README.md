@@ -1,12 +1,17 @@
 # Calendar App
 
-Cuarta aplicación realizada en el curso de React de Fernando Herrera.
+Una aplicación que te permite crear eventos en un calendario
 
-En esta aplicacion se implementa:
+En esta aplicación se implementa:
 
-- Redux
+* Redux
+* Comunicación con API Rest en Express alojada en Heroku
 
 ## Development steps
 
 1. Renombrar el archivo .env.template por .env
 2. Hacer los cambios respectivos en las variables de entorno
+
+## Demostración
+
+https://calendar-app-nd.netlify.app
