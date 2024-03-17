@@ -42,11 +42,17 @@ exports[`Pruebas en <AppRouter/> Debe de mostrar el login en caso de no estar au
           <div
             class="d-grid gap-2"
           >
-            <input
-              class="btnSubmit"
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1agp3zg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+              id=":r0:"
+              tabindex="0"
               type="submit"
-              value="Login"
-            />
+            >
+              Login
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
           </div>
         </form>
       </div>
@@ -108,11 +114,17 @@ exports[`Pruebas en <AppRouter/> Debe de mostrar el login en caso de no estar au
           <div
             class="d-grid gap-2"
           >
-            <input
-              class="btnSubmit"
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorInherit MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorInherit css-mkie7h-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+              id=":r1:"
+              tabindex="0"
               type="submit"
-              value="Crear cuenta"
-            />
+            >
+              Crear cuenta
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
           </div>
         </form>
       </div>

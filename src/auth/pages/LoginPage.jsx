@@ -3,6 +3,7 @@ import { useForm, useAuthStore } from './../../hooks';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { LoadingButton } from '@mui/lab';
 
 const loginFormFields = {
   loginEmail: '',
@@ -20,11 +21,7 @@ export const LoginPage = () => {
   const { status, startLogin, startRegister, errorMessage } = useAuthStore();
   const navigate = useNavigate();
 
-  const {
-    loginEmail,
-    loginPassword,
-    onInputChange: onLoginInputChange,
-  } = useForm(loginFormFields);
+  const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
 
   const {
     registerName,
@@ -41,20 +38,20 @@ export const LoginPage = () => {
 
   const registerSubmit = (event) => {
     event.preventDefault();
-    if(registerPassword !== registerPassword2) {
+    if (registerPassword !== registerPassword2) {
       Swal.fire('Error en registro', 'Las contraseñas no son iguales', 'error');
       return;
     }
 
-    startRegister({ name: registerName, email: registerEmail, password: registerPassword});
+    startRegister({ name: registerName, email: registerEmail, password: registerPassword });
   };
 
   useEffect(() => {
-    if(errorMessage !== undefined) {
+    if (errorMessage !== undefined) {
       Swal.fire('Error en la autenticación', errorMessage, 'error');
     }
   }, [errorMessage]);
-  
+
   useEffect(() => {
     if (status === 'authenticated') {
       navigate('/', {
@@ -63,7 +60,7 @@ export const LoginPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
-  
+
   return (
     <div className="container login-container">
       <div className="row">
@@ -93,7 +90,15 @@ export const LoginPage = () => {
               />
             </div>
             <div className="d-grid gap-2">
-              <input type="submit" className="btnSubmit" value="Login" />
+              <LoadingButton
+                type="submit"
+                loading={status === 'checking'}
+                color="primary"
+                variant="contained"
+                sx={{ textTransform: 'none' }}
+              >
+                Login
+              </LoadingButton>
             </div>
           </form>
         </div>
@@ -146,7 +151,15 @@ export const LoginPage = () => {
               />
             </div>
             <div className="d-grid gap-2">
-              <input type="submit" className="btnSubmit" value="Crear cuenta" />
+              <LoadingButton
+                type="submit"
+                loading={status === 'checking'}
+                color="inherit"
+                variant="contained"
+                sx={{ textTransform: 'none', backgroundColor: 'white', color: '#0062cc' }}
+              >
+                Crear cuenta
+              </LoadingButton>
             </div>
           </form>
         </div>

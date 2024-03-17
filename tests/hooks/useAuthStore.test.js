@@ -33,7 +33,7 @@ describe('Pruebas en usAuthStore', () => {
 
     expect(result.current).toEqual({
       errorMessage: undefined,
-      status: 'checking',
+      status: 'not-authenticated',
       user: {},
       checkAuthToken: expect.any(Function),
       startLogin: expect.any(Function),
