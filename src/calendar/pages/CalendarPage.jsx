@@ -14,8 +14,7 @@ export const CalendarPage = () => {
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');
 
   const eventStyleGetter = (event) => {
-
-    const isMyEvent = (user.uid === event.user._id) || (user.uid === event.user.uid);
+    const isMyEvent = user.uid === event.user._id || user.uid === event.user.uid;
 
     const style = {
       backgroundColor: isMyEvent ? '#347CF7' : '#465660',
@@ -29,13 +28,11 @@ export const CalendarPage = () => {
     };
   };
 
-  const onDoubleClick = (event) => {
-    console.log({ doubleClick: event });
+  const onDoubleClick = () => {
     openDateModal();
   };
 
   const onSelect = (event) => {
-    console.log({ click: event });
     setActiveEvent(event);
   };
 
@@ -46,9 +43,8 @@ export const CalendarPage = () => {
 
   useEffect(() => {
     startLoadingEvents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
 
   return (
     <>
@@ -72,9 +68,9 @@ export const CalendarPage = () => {
         onView={onViewChanged}
       />
 
-      <CalendarModal/>
-      <FabAddNew/>
-      <FabDelete/>
+      <CalendarModal />
+      <FabAddNew />
+      <FabDelete />
     </>
   );
 };
