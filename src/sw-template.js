@@ -9,20 +9,33 @@ const { registerRoute } = workbox.routing;
 const { CacheFirst, NetworkFirst, NetworkOnly } = workbox.strategies;
 const { BackgroundSyncPlugin } = workbox.backgroundSync;
 
+const networkFirst = [
+  '/api/auth/renew',
+  '/api/events',
+]
+
+const cacheFirst = [
+  'https://kit.fontawesome.com/caf6c2f77a.js'
+]
+
+const networkOnly = [
+  '/api/events',
+  '/api/events/',
+]
+
 registerRoute(
-	new RegExp('https://kit.fontawesome.com/caf6c2f77a.js'),
+  ({url}) => {
+    return networkFirst.includes(url.pathname);
+  },
+	new NetworkFirst()
+);
+
+registerRoute(
+  ({url}) => {
+    return cacheFirst.includes(url.href);
+  },
 	//* Aplicar la estrategia que se desee
 	new CacheFirst()
-);
-
-registerRoute(
-	new RegExp('https://mern-calendar-nigthdreamer-3e02285419bf.herokuapp.com/api/auth/renew'),
-	new NetworkFirst(),
-);
-
-registerRoute(
-	new RegExp('https://mern-calendar-nigthdreamer-3e02285419bf.herokuapp.com/api/events'),
-	new NetworkFirst()
 );
 
 // Offline Posts
@@ -42,9 +55,31 @@ const statusPlugin = {
 };
 
 registerRoute(
-	new RegExp('https://mern-calendar-nigthdreamer-3e02285419bf.herokuapp.com/api/events'),
+  ({url}) => {
+    return networkOnly.includes(url.pathname);
+  },
 	new NetworkOnly({
     plugins: [bgSyncPlugin, statusPlugin]
   }),
 	'POST'
+);
+
+registerRoute(
+  ({url}) => {
+    return networkOnly.includes(url.pathname);
+  },
+	new NetworkOnly({
+    plugins: [bgSyncPlugin, statusPlugin]
+  }),
+	'DELETE'
+);
+
+registerRoute(
+  ({url}) => {
+    return networkOnly.includes(url.pathname);
+  },
+	new NetworkOnly({
+    plugins: [bgSyncPlugin, statusPlugin]
+  }),
+	'PUT'
 );
