@@ -27,7 +27,7 @@ export const useCalendarStore = () => {
         dispatch(onUpdateEvent({ ...calendarEvent, user }));
       } catch (error) {
         console.error(error);
-        Swal.fire('Error al actualizar', error.response.data.msg, 'error');
+        Swal.fire('Error al actualizar', error.response?.data?.msg || '', 'error');
       }
     } else {
       // Creando
@@ -36,7 +36,7 @@ export const useCalendarStore = () => {
         dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
       } catch (error) {
         console.error(error);
-        Swal.fire('Error al crear', error.response.data.msg, 'error');
+        Swal.fire('Error al crear', error.response?.data?.msg || '', 'error');
       }
     }
   };
@@ -47,7 +47,7 @@ export const useCalendarStore = () => {
       dispatch(onDeleteEvent());
     } catch (error) {
       console.error(error);
-      Swal.fire('Error al eliminar', error.response.data.msg, 'error');
+      Swal.fire('Error al eliminar', error.response?.data?.msg || '', 'error');
     }
   };
 

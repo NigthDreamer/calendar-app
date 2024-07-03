@@ -10,5 +10,12 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script src="https://kit.fontawesome.com/caf6c2f77a.js" crossorigin="anonymous"></script>
+    <script>
+      const isProduction = true;
+
+      if (isProduction && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+      }
+    </script>
   </body>
 </html>
